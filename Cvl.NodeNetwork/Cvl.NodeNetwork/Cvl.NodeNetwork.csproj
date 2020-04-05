@@ -2,12 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>0.8.0</Version>
+    <Version>0.8.1</Version>
+    <ApplicationIcon>Icons\logo_nodenetwork_m.ico</ApplicationIcon>
+    <Win32Resource />
+    <PackageIcon>logo-nodenetwork-m.png</PackageIcon>
+    <PackageIconUrl />
+    <AssemblyVersion>0.8.1.0</AssemblyVersion>
+    <FileVersion>0.8.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Castle.Core" Version="4.4.0" />
     <PackageReference Include="SharpSerializer" Version="3.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Icons\logo-nodenetwork-m.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

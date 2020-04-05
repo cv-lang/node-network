@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cvl.NodeNetwork.WebHub", "Cvl.NodeNetwork.WebHub\Cvl.NodeNetwork.WebHub.csproj", "{1F38C74E-BA37-4C69-BA25-854F852E0035}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp1", "TestApp1\TestApp1.csproj", "{E763C545-4704-44DB-BA58-6EB8FD35C33A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp1", "TestApp1\TestApp1.csproj", "{E763C545-4704-44DB-BA58-6EB8FD35C33A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp2", "TestApp2\TestApp2.csproj", "{9BE16412-43CF-4ED3-B2A1-62982DC029AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp2", "TestApp2\TestApp2.csproj", "{9BE16412-43CF-4ED3-B2A1-62982DC029AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cvl.NodeNetwork", "Cvl.NodeNetwork\Cvl.NodeNetwork.csproj", "{920D4998-398D-4757-B55C-04749FEE0902}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cvl.NodeNetwork", "Cvl.NodeNetwork\Cvl.NodeNetwork.csproj", "{920D4998-398D-4757-B55C-04749FEE0902}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

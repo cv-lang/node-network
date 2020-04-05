@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Cvl.NodeNetwork.Server;
+using Cvl.NodeNetwork.Test;
 using Cvl.NodeNetwork.WebHub.SignalR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -49,6 +51,8 @@ namespace Cvl.NodeNetwork.WebHub
                 endpoints.MapControllers();
                 endpoints.MapHub<NodeNetworkHub>("/hub");
             });
+
+            ServiceHost.RegisterService<ITestService>(typeof(TestService));
         }
     }
 }

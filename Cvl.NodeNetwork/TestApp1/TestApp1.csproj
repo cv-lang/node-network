@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cvl.NodeNetwork\Cvl.NodeNetwork.csproj" />
+    <ProjectReference Include="..\Cvl.NodeNetwork.Standard\Cvl.NodeNetwork.Standard.csproj" />
   </ItemGroup>
 
 </Project>

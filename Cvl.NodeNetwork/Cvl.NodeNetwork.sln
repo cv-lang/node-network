@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp1", "TestApp1\TestAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp2", "TestApp2\TestApp2.csproj", "{9BE16412-43CF-4ED3-B2A1-62982DC029AC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cvl.NodeNetwork", "Cvl.NodeNetwork\Cvl.NodeNetwork.csproj", "{920D4998-398D-4757-B55C-04749FEE0902}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cvl.NodeNetwork.Standard", "Cvl.NodeNetwork.Standard\Cvl.NodeNetwork.Standard.csproj", "{B2AF5B37-86F9-4429-8EB7-34A780E77E98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{9BE16412-43CF-4ED3-B2A1-62982DC029AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BE16412-43CF-4ED3-B2A1-62982DC029AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BE16412-43CF-4ED3-B2A1-62982DC029AC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{920D4998-398D-4757-B55C-04749FEE0902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{920D4998-398D-4757-B55C-04749FEE0902}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{920D4998-398D-4757-B55C-04749FEE0902}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{920D4998-398D-4757-B55C-04749FEE0902}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2AF5B37-86F9-4429-8EB7-34A780E77E98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2AF5B37-86F9-4429-8EB7-34A780E77E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2AF5B37-86F9-4429-8EB7-34A780E77E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2AF5B37-86F9-4429-8EB7-34A780E77E98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

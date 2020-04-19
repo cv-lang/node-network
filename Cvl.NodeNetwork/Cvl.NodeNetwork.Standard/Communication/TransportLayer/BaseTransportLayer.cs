@@ -9,7 +9,14 @@ namespace Cvl.NodeNetwork.Communication.TransportLayer
 {
     public class BaseTransportLayer
     {
-        public Response SendRequest(Request request)
+        public BaseTransportLayer(string serviceEndpointUrl)
+        {
+            this.serviceEndpointUrl = serviceEndpointUrl;
+        }
+
+        protected string serviceEndpointUrl;
+
+        public virtual Response SendRequest(Request request)
         {
             //Przygotowanie danych do wysyłki po "kablu"
             var binaryRequestData = GetRequestBinaryData(request);
@@ -24,7 +31,7 @@ namespace Cvl.NodeNetwork.Communication.TransportLayer
 
         
 
-        protected virtual byte[] SendRequestTransportLayer(byte[] binaryRequestData)
+        internal virtual byte[] SendRequestTransportLayer(byte[] binaryRequestData)
         {
             throw new NotImplementedException();
         }

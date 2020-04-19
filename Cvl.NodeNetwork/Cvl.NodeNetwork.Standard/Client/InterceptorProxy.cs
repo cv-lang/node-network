@@ -11,10 +11,10 @@ namespace Cvl.NodeNetwork.Client
     public class InterceptorProxy<T> : IInterceptor
         where T : class
     {
-        private object channelFactory;
+        private ChannelFactory channelFactory;
         private BaseTransportLayer transportLayer;
 
-        public InterceptorProxy(object channelFactory, BaseTransportLayer transportLayer)
+        public InterceptorProxy(ChannelFactory channelFactory, BaseTransportLayer transportLayer)
         {
             this.channelFactory = channelFactory;
             this.transportLayer = transportLayer;
@@ -23,8 +23,9 @@ namespace Cvl.NodeNetwork.Client
         public void Intercept(IInvocation invocation)
         {
             var request = new Request();
+            request.ServiceId = channelFactory.ServiceId;
             request.MethodName = invocation.Method.Name;
-            request.ContractTypeFullName = typeof(T).FullName;
+            request.ServiceContractTypeFullName = typeof(T).FullName;
             request.Arguments = invocation.Arguments.ToList();
 
             var respond = transportLayer.SendRequest(request);

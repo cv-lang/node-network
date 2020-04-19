@@ -8,13 +8,11 @@ namespace Cvl.NodeNetwork.Communication.TransportLayer
     public class RestTransportLayer : BaseTransportLayer
     {
         public RestTransportLayer(string serviceEndpointUrl)
+        :base(serviceEndpointUrl)
         {
-            this.serviceEndpointUrl = serviceEndpointUrl;
         }
 
-        private string serviceEndpointUrl;
-
-        protected override byte[] SendRequestTransportLayer(byte[] binaryRequestData)
+        internal override byte[] SendRequestTransportLayer(byte[] binaryRequestData)
         {
             var httpClient = new HttpClient();
 

@@ -8,6 +8,7 @@ namespace Cvl.NodeNetwork.Client
 {
     public class ChannelFactory : IDisposable
     {
+        internal string ServiceId { get; set; }
         public void Dispose()
         {
             
@@ -17,19 +18,36 @@ namespace Cvl.NodeNetwork.Client
     public class ChannelFactory<T> : ChannelFactory
         where T:class
     {
-        private string serviceEndpointUrl;
-        public ChannelFactory(string ServiceEndpointUrl)
+        public ChannelFactory(string serviceEndpointUrl, string serviceId=null)
         {
-            serviceEndpointUrl = ServiceEndpointUrl;
+            this.serviceEndpointUrl = serviceEndpointUrl;
+            ServiceId = serviceId;
         }
+
+        private string serviceEndpointUrl;
 
         public T CreateChannel()
         {
-            var proxyConnection = new InterceptorProxy<T>(this, new RestTransportLayer(serviceEndpointUrl));
+            var transport = createTransportLayer(serviceEndpointUrl);
+            var proxyConnection = new InterceptorProxy<T>(this, transport);
 
             var generator = new ProxyGenerator();
             var proxy = generator.CreateInterfaceProxyWithoutTarget<T>(proxyConnection);
             return proxy;
+        }
+
+        private BaseTransportLayer createTransportLayer(string url)
+        {
+            if (url.StartsWith("http"))
+            {
+                return new RestTransportLayer(url);
+            } else if (url.StartsWith("nodenetwork://"))
+            {
+                url = url.Replace("nodenetwork://", "");
+                return new NodeNetworkTransportLayer(url);
+            }
+
+            throw new NotImplementedException($"Not implemented transport layer: {url}");
         }
     }
 }

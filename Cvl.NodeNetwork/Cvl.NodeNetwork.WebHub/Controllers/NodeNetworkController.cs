@@ -5,16 +5,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using Cvl.NodeNetwork.Communication.TransportLayer;
 using Cvl.NodeNetwork.Server;
+using Cvl.NodeNetwork.WebHub.SignalR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 
 namespace Cvl.NodeNetwork.WebHub.Controllers
 {
+    /// <summary>
+    /// Kontroler odpowiedzialny za hostowanie serwisów w hubie
+    /// Które hostowane są lokalnie
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
-    public class NodeNetworkController : ControllerBase
+    public class NodeNetworkController : ControllerBase, IServiceHostNotification
     {
-        
+
+        public IHubContext<NodeNetworkHub> _strongChatHubContext { get; }
+
+        public NodeNetworkController(IHubContext<NodeNetworkHub> chatHubContext)
+        {
+            _strongChatHubContext = chatHubContext;
+        }
+
         [HttpGet]
         public string Get(string message)
         {
@@ -22,8 +35,8 @@ namespace Cvl.NodeNetwork.WebHub.Controllers
         }
 
 
-        [RequestSizeLimit(400000000)]
-        public async void Post()
+        [RequestSizeLimit(400_000_000)]
+        public async Task Post()
         {
             //Pobieranie danych binarnych
             byte[] requestBinaryData = null;
@@ -33,17 +46,21 @@ namespace Cvl.NodeNetwork.WebHub.Controllers
                 requestBinaryData = ms.ToArray();
             }
 
-            //przygotowanie requestu warstwy transportu
-            var request = BaseTransportLayer.GetRequest(requestBinaryData);
-
-            //wykonanie serwisu
-            var response = ServiceHost.Invoke(request);
-
-            //przygotowanie responsu warstwy transportu
-            var responseBinaryData = BaseTransportLayer.GetResponseBinaryData(response);            
-
+            var responseBinaryData= await NodeNetworkControllerBase.Post(requestBinaryData, this);
+            
             //wysłanie danych binarnych responsu
             await Response.Body.WriteAsync(responseBinaryData, 0, responseBinaryData.Length);
+        }
+
+        [Route("Notification")]
+        [HttpPost]
+        public void Notification(
+            string serviceContractTypeFullName, 
+            string serviceId, 
+            Guid requestId)
+        {
+            NodeNetworkHub.SendNotificationToServiceHost(serviceContractTypeFullName, serviceId,
+                requestId, _strongChatHubContext);
         }
     }
 }

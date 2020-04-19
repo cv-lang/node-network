@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Text;
 using System.Threading.Tasks;
+using Cvl.NodeNetwork.Server.Hub;
 
 namespace TestApp1
 {
@@ -22,8 +23,22 @@ namespace TestApp1
                 var ret = serviceProxy.Ping(12);
             }
 
+            using (var mychannelFactory = new ChannelFactory<INodeNetworkHubService>(endpoint))
+            {
+                var serviceProxy = mychannelFactory.CreateChannel();
+                //serviceProxy.SendTest();
+            }
 
-                Console.ReadKey();
+
+            //przykład połączenia przez sieć węzłową
+            var endpointNodeNetwork = "nodenetwork://https://localhost:44331/NodeNetwork";
+            using (var mychannelFactory = new ChannelFactory<ITestService>(endpoint))
+            {
+                var serviceProxy = mychannelFactory.CreateChannel();
+                var ret = serviceProxy.Ping(12);
+            }
+
+            Console.ReadKey();
         }
 
         //public async static string PobierzDaneSerwera(string request)

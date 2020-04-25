@@ -14,7 +14,7 @@ namespace TestApp2
         public async Task ConnectServiceToNetwork(string url)
         {
             var signalRUrl = url + "/NodeNetworkHub";
-            var nodenetworkControllerUrl = url + "/NodeNetwork";
+            var nodenetworkControllerUrl = url;
 
             HubConnection connection = new HubConnectionBuilder()
                 .WithUrl(signalRUrl)
@@ -80,7 +80,7 @@ namespace TestApp2
             await hub.ConnectServiceToNetwork("https://localhost:44331");
 
 
-            var endpoint = "nodenetwork://" + "https://localhost:44331/NodeNetwork";
+            var endpoint = "nodenetwork://" + "https://localhost:44331";
             using (var mychannelFactory = new ChannelFactory<ITestService>(endpoint))
             {
                 var serviceProxy = mychannelFactory.CreateChannel();

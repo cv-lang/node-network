@@ -61,11 +61,5 @@ namespace Cvl.NodeNetwork.WebHub.SignalR
             client.SendAsync("RequestNotification", requestId.ToString());
         }
 
-        public void Test()
-        {
-            //var context = ConnectionManager.GetHubContext<NodeNetworkHub>();
-            //context.Clients.All.addMessage("Hello");
-            Clients.All.SendAsync("ReceiveMessage", "Sdf", "tjaaa");
-        }
     }
 }

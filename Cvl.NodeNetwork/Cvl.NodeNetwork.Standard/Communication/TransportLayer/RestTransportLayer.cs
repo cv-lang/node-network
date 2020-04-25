@@ -16,8 +16,10 @@ namespace Cvl.NodeNetwork.Communication.TransportLayer
         {
             var httpClient = new HttpClient();
 
+            var serviceUrl = serviceEndpointUrl + "/NodeNetwork";
+
             HttpResponseMessage responseHttp = httpClient
-                .PostAsync(new Uri(serviceEndpointUrl),
+                .PostAsync(new Uri(serviceUrl),
                     new ByteArrayContent(binaryRequestData)).Result;
             Byte[] binaryResponseData = responseHttp.Content.ReadAsByteArrayAsync().Result;
 

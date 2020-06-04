@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Cvl.NodeNetwork.Server;
+using Cvl.NodeNetwork.ServiceHost;
 
 namespace Cvl.NodeNetwork.Communication.TransportLayer.Model
 {

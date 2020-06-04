@@ -1,14 +1,10 @@
-﻿using Cvl.NodeNetwork.Client;
-using Microsoft.AspNetCore.SignalR.Client;
+﻿//using Microsoft.AspNetCore.SignalR.Client;
 using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Cvl.NodeNetwork.Server;
-using Cvl.NodeNetwork.Server.Hub;
-using Cvl.NodeNetwork.Test;
-using Cvl.NodeNetwork.ServiceHost;
 
-namespace TestApp2
+namespace Cvl.NodeNetwork.ServiceHost
 {
     //public class NodeNetworkTransport
     //{
@@ -65,29 +61,4 @@ namespace TestApp2
     //        await connection.SendAsync("ConnectToNodeNetwork", registeredServiceContractsXml);
     //    }
     //}
-
-    class Program
-    {
-        static async Task Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-
-            //rejestruje serwis
-            NodeNetworkServiceHost.RegisterService<TestService,ITestService>();
-
-            //rejestruje serwis podpięty do hosta
-            var hub = new NodeNetworkTransport();
-            await hub.ConnectServiceToNetwork("https://localhost:44331");
-
-
-            var endpoint = "nodenetwork://" + "https://localhost:44331";
-            using (var mychannelFactory = new ChannelFactory<ITestService>(endpoint))
-            {
-                var serviceProxy = mychannelFactory.CreateChannel();
-                var ret = serviceProxy.Ping(12);
-            }
-
-            Console.ReadKey();
-        }
-    }
 }

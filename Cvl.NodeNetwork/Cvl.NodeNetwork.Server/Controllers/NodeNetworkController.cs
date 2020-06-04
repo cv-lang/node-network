@@ -5,12 +5,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Cvl.NodeNetwork.Communication.TransportLayer;
 using Cvl.NodeNetwork.Server;
-using Cvl.NodeNetwork.WebHub.SignalR;
+using Cvl.NodeNetwork.Server.SignalR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 
-namespace Cvl.NodeNetwork.WebHub.Controllers
+namespace Cvl.NodeNetwork.Server.Controllers
 {
     /// <summary>
     /// Kontroler odpowiedzialny za hostowanie serwisów w hubie
@@ -46,8 +46,8 @@ namespace Cvl.NodeNetwork.WebHub.Controllers
                 requestBinaryData = ms.ToArray();
             }
 
-            var responseBinaryData= await NodeNetworkControllerBase.Post(requestBinaryData, this);
-            
+            var responseBinaryData = await NodeNetworkControllerBase.Post(requestBinaryData, this);
+
             //wysłanie danych binarnych responsu
             await Response.Body.WriteAsync(responseBinaryData, 0, responseBinaryData.Length);
         }
@@ -55,8 +55,8 @@ namespace Cvl.NodeNetwork.WebHub.Controllers
         [Route("Notification")]
         [HttpPost]
         public void Notification(
-            string serviceContractTypeFullName, 
-            string serviceId, 
+            string serviceContractTypeFullName,
+            string serviceId,
             Guid requestId)
         {
             NodeNetworkHub.SendNotificationToServiceHost(serviceContractTypeFullName, serviceId,

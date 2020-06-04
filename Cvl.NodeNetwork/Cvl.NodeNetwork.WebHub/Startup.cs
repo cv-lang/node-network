@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Cvl.NodeNetwork.Server;
+using Cvl.NodeNetwork.Server.Extensions;
 using Cvl.NodeNetwork.Server.Hub;
+using Cvl.NodeNetwork.Server.SignalR;
 using Cvl.NodeNetwork.Test;
-using Cvl.NodeNetwork.WebHub.SignalR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Builder;
 
 namespace Cvl.NodeNetwork.WebHub
 {
@@ -45,16 +46,16 @@ namespace Cvl.NodeNetwork.WebHub
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthorization();            
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<SignalR.NodeNetworkHub>("/NodeNetworkHub");
+                endpoints.MapHub<NodeNetworkHub>("/NodeNetworkHub");
             });
 
-            NodeNetworkServiceHost.RegisterService<TestService,ITestService>();
-            NodeNetworkServiceHost.RegisterService<Server.Hub.NodeNetworkHubService,Server.Hub.INodeNetworkHubService>();
-        }
+            app.UseNodeNetwork();
+
+            }
     }
 }

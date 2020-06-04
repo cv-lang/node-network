@@ -7,16 +7,9 @@ using Cvl.NodeNetwork.Server;
 using Cvl.NodeNetwork.Server.Hub;
 using Cvl.NodeNetwork.Tools;
 
-
-namespace Cvl.NodeNetwork.WebHub.SignalR
+namespace Cvl.NodeNetwork.Server.SignalR
 {
-    
-
-    public interface INodeNetworkHub
-    {
-        void Test();
-    }
-    public class NodeNetworkHub : Hub
+    public class NodeNetworkHub : Microsoft.AspNetCore.SignalR.Hub
     {
         public Task SendMessage(string user, string message)
         {
@@ -30,7 +23,7 @@ namespace Cvl.NodeNetwork.WebHub.SignalR
         }
 
 
-        private static List<ServiceReference> registeredServiceContracts 
+        private static List<ServiceReference> registeredServiceContracts
             = new List<ServiceReference>();
 
         public Task ConnectToNodeNetwork(string registeredServiceContractsXml)
@@ -47,8 +40,8 @@ namespace Cvl.NodeNetwork.WebHub.SignalR
 
 
         public static void SendNotificationToServiceHost(
-            string serviceContractTypeFullName, 
-            string serviceId, 
+            string serviceContractTypeFullName,
+            string serviceId,
             Guid requestId,
             IHubContext<NodeNetworkHub> _strongChatHubContext)
         {
@@ -60,6 +53,5 @@ namespace Cvl.NodeNetwork.WebHub.SignalR
             var client = _strongChatHubContext.Clients.Client(serviceReference.NodeNetworkServieHostAddress);
             client.SendAsync("RequestNotification", requestId.ToString());
         }
-
     }
 }

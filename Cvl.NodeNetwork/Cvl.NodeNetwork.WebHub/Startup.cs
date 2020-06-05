@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Routing;
 
 namespace Cvl.NodeNetwork.WebHub
 {
@@ -50,12 +51,11 @@ namespace Cvl.NodeNetwork.WebHub
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers();                
                 endpoints.MapHub<NodeNetworkHub>("/NodeNetworkHub");
             });
 
             app.UseNodeNetwork();
-
-            }
+        }        
     }
 }

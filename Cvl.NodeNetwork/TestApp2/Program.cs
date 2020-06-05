@@ -75,7 +75,7 @@ namespace TestApp2
             //rejestruje serwis
             NodeNetworkServiceHost.RegisterService<TestService,ITestService>();
 
-            //rejestruje serwis podpięty do hosta
+            //rejestruje ServiceHost do NodeServer
             var hub = new NodeNetworkTransport();
             await hub.ConnectServiceToNetwork("https://localhost:44331");
 

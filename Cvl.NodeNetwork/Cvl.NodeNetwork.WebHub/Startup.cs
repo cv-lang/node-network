@@ -44,15 +44,12 @@ namespace Cvl.NodeNetwork.WebHub
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();            
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();                
-                endpoints.MapHub<NodeNetworkHub>("/NodeNetworkHub");
+                endpoints.MapControllers();
             });
 
             app.UseNodeNetwork();

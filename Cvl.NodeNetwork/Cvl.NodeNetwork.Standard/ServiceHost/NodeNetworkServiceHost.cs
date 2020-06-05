@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Cvl.NodeNetwork.Tools;
 using Cvl.NodeNetwork.Server;
+using System.Threading.Tasks;
 
 namespace Cvl.NodeNetwork.ServiceHost
 {
@@ -59,6 +60,13 @@ namespace Cvl.NodeNetwork.ServiceHost
             }
 
             return serviceInstance;
+        }
+
+        public async static Task ConnectToNodeNetworkHub(string endpoint)
+        {
+            //rejestruje ServiceHost do NodeServer
+            var hub = new NodeNetworkTransport();
+            await hub.ConnectServiceToNetwork(endpoint);
         }
     }
 }

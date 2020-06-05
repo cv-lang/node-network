@@ -72,13 +72,14 @@ namespace TestApp2
         {
             Console.WriteLine("Hello World!");
 
+            // część Hosta serwisu
             //rejestruje serwis
             NodeNetworkServiceHost.RegisterService<TestService,ITestService>();
+            await NodeNetworkServiceHost.ConnectToNodeNetworkHub("https://localhost:44331");
+            
 
-            //rejestruje ServiceHost do NodeServer
-            var hub = new NodeNetworkTransport();
-            await hub.ConnectServiceToNetwork("https://localhost:44331");
 
+            ///cześć klienta
 
             var endpoint = "nodenetwork://" + "https://localhost:44331";
             using (var mychannelFactory = new ChannelFactory<ITestService>(endpoint))

@@ -10,6 +10,9 @@
     <RepositoryType>Git</RepositoryType>
     <PackageReleaseNotes></PackageReleaseNotes>
     <PackageTags>wcf, communication</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cvl.NodeNetwork.Standard\Cvl.NodeNetwork.Standard.csproj" />
+    <None Include="Icons\logo-nodenetwork-m.png" />
   </ItemGroup>
 
 </Project>

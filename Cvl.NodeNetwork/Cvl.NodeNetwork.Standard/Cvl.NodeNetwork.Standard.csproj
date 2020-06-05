@@ -2,15 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.8.2</Version>
+    <Version>0.8.3</Version>
     <ApplicationIcon>Icons\logo_nodenetwork_m.ico</ApplicationIcon>
     <Win32Resource />
     <PackageIcon>logo-nodenetwork-m.png</PackageIcon>
     <PackageIconUrl />
-    <AssemblyVersion>0.8.2.0</AssemblyVersion>
+    <AssemblyVersion>0.8.3.0</AssemblyVersion>
     <FileVersion>0.8.2.0</FileVersion>
     <AssemblyName>Cvl.NodeNetwork</AssemblyName>
     <RootNamespace>Cvl.NodeNetwork</RootNamespace>
+    <Description>Simple - C# Interface base communication module a'la WCF</Description>
+    <PackageProjectUrl>https://github.com/cv-lang/node-network</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/cv-lang/node-network</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>wcf, communication</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

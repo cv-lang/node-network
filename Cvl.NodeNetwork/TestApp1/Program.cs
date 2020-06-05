@@ -1,81 +1,24 @@
-﻿using Cvl.NodeNetwork.Client;
-using Cvl.NodeNetwork.Test;
-using Microsoft.AspNetCore.SignalR.Client;
+﻿using Cvl.NodeNetwork.Test;
 using System;
-using System.Text;
+using Cvl.NodeNetwork.ServiceHost;
 using System.Threading.Tasks;
-using Cvl.NodeNetwork.Server.Hub;
 
 namespace TestApp1
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //waiting until hub is started
+            await Task.Delay(1000);
 
-            //Console.ReadKey();
-            var endpoint = "https://localhost:44331/NodeNetwork";
-
-            using (var mychannelFactory = new ChannelFactory<ITestService>(endpoint))
-            {
-                var serviceProxy = mychannelFactory.CreateChannel();
-                var ret = serviceProxy.Ping(12);
-            }
-
-            using (var mychannelFactory = new ChannelFactory<INodeNetworkHubService>(endpoint))
-            {
-                var serviceProxy = mychannelFactory.CreateChannel();
-                //serviceProxy.SendTest();
-            }
-
-
-            //przykład połączenia przez sieć węzłową
-            var endpointNodeNetwork = "nodenetwork://https://localhost:44331/NodeNetwork";
-            using (var mychannelFactory = new ChannelFactory<ITestService>(endpoint))
-            {
-                var serviceProxy = mychannelFactory.CreateChannel();
-                var ret = serviceProxy.Ping(12);
-            }
+            Console.WriteLine("ServiceHost - register service");
+            // część Hosta serwisu
+            //rejestruje serwis testowy w sieci (w HUBie)
+            NodeNetworkServiceHost.RegisterService<TestService, ITestService>();
+            await NodeNetworkServiceHost.ConnectToNodeNetworkHub("https://localhost:44331");
 
             Console.ReadKey();
-        }
-
-        //public async static string PobierzDaneSerwera(string request)
-        //{
-        //    var connection = new HubConnectionBuilder()
-        //        .WithUrl("https://localhost:44331/hub")
-        //        .Build();
-
-        //    connection.Closed += async (error) =>
-        //    {
-        //        await Task.Delay(new Random().Next(0, 5) * 1000);
-        //        await connection.StartAsync();
-        //    };
-
-        //    connection.On<string, string>("ReceiveMessage", (user, message) =>
-        //    {
-        //        var newMessage = $"{user}: {message.Length}";
-        //        Console.WriteLine(newMessage);
-        //    });
-
-        //    await connection.StartAsync();
-
-        //    var sb = new StringBuilder();
-
-        //    for (int i = 0; i < 1000 * 1; i++)
-        //    {
-        //        sb.Append($" Tresc {i} ");
-        //    }
-
-        //    var wiadomosc = sb.ToString();
-
-        //    var rozmiar = wiadomosc.Length;
-
-        //    Console.WriteLine(rozmiar);
-
-        //    await connection.SendAsync("SendMessage", "michal", wiadomosc);
-           
-        //}
+        }        
     }
 }

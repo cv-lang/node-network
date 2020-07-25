@@ -15,7 +15,7 @@ namespace TestApp2
         static async Task Main(string[] args)
         {
             //waiting until hub and service host is started
-            await Task.Delay(2000);
+            await Task.Delay(6000);
 
 
             Console.WriteLine("Client");

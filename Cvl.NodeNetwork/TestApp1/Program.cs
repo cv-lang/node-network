@@ -10,7 +10,7 @@ namespace TestApp1
         static async Task Main(string[] args)
         {
             //waiting until hub is started
-            await Task.Delay(1000);
+            await Task.Delay(3000);
 
             Console.WriteLine("ServiceHost - register service");
             // część Hosta serwisu

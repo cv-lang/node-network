@@ -20,7 +20,7 @@ namespace TestApp2
 
             Console.WriteLine("Client");
 
-            var endpoint = "nodenetwork://" + "https://localhost:44331";
+            var endpoint = "https://localhost:44331";
             using (var mychannelFactory = new ChannelFactory<ITestService>(endpoint))
             {
                 var serviceProxy = mychannelFactory.CreateChannel();

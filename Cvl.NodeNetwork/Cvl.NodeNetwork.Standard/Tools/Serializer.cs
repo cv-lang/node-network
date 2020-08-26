@@ -63,9 +63,21 @@ namespace Cvl.NodeNetwork.Tools
                 return default(T);
             }
 
+            if (isDotNetCore() == false)
+            {
+                //mapuje biblioteki standardowe z .net core na .net Framework
+                xmlOfAnObject = xmlOfAnObject.Replace("System.Private.CoreLib", "mscorlib");
+            }
+
             //return JsonConvert.DeserializeObject<T>(xmlOfAnObject);
 
             return (T)DeserializeObject(xmlOfAnObject);
+        }
+
+        private static bool isDotNetCore()
+        {
+            var isCore = typeof(int).Assembly.FullName.Contains("CoreLib");
+            return isCore;
         }
 
         public static object DeserializeObject(string xmlOfAnObject)
@@ -87,6 +99,7 @@ namespace Cvl.NodeNetwork.Tools
             settings.IncludeAssemblyVersionInTypeName = false;
             settings.IncludeCultureInTypeName = false;
             settings.IncludePublicKeyTokenInTypeName = false;
+            
 
             var serializer = new SharpSerializer(settings);
             serializer.PropertyProvider.AttributesToIgnore.Clear();

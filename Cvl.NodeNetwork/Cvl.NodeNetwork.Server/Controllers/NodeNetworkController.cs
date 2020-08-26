@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,6 +32,7 @@ namespace Cvl.NodeNetwork.Server.Controllers
         [HttpGet]
         public string Get(string message)
         {
+            System.Diagnostics.Debugger.Break();
             return "ping " + message;
         }
 
@@ -38,6 +40,7 @@ namespace Cvl.NodeNetwork.Server.Controllers
         [RequestSizeLimit(400_000_000)]
         public async Task Post()
         {
+            //System.Diagnostics.Debugger.Break();
             //Pobieranie danych binarnych
             byte[] requestBinaryData = null;
             using (var ms = new MemoryStream())

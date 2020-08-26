@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cvl.NodeNetwork.Standard", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cvl.NodeNetwork.Server", "Cvl.NodeNetwork.Server\Cvl.NodeNetwork.Server.csproj", "{2927ED04-40C8-47D2-8D75-BEBB32724335}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp48", "TestApp48\TestApp48.csproj", "{D3AA8695-FCBF-43FE-91A4-EF56F5A02642}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2927ED04-40C8-47D2-8D75-BEBB32724335}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2927ED04-40C8-47D2-8D75-BEBB32724335}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2927ED04-40C8-47D2-8D75-BEBB32724335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3AA8695-FCBF-43FE-91A4-EF56F5A02642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3AA8695-FCBF-43FE-91A4-EF56F5A02642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3AA8695-FCBF-43FE-91A4-EF56F5A02642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3AA8695-FCBF-43FE-91A4-EF56F5A02642}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

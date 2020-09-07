@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.8.3</Version>
+    <Version>0.9.0</Version>
     <ApplicationIcon></ApplicationIcon>
     <Win32Resource />
     <PackageIcon>logo-nodenetwork-m.png</PackageIcon>
     <PackageIconUrl />
-    <AssemblyVersion>0.8.3.0</AssemblyVersion>
-    <FileVersion>0.8.2.0</FileVersion>
+    <AssemblyVersion>0.9.0.0</AssemblyVersion>
+    <FileVersion>0.9.0.0</FileVersion>
     <AssemblyName>Cvl.NodeNetwork</AssemblyName>
     <RootNamespace>Cvl.NodeNetwork</RootNamespace>
     <Description>Simple - C# Interface base communication module a'la WCF</Description>

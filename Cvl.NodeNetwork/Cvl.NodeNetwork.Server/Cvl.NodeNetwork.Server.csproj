@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>Library</OutputType>
-    <Version>0.9.0</Version>
-    <Description>Simple - C# Interface base communication module a'la WCF - server library</Description>
+    <Version>0.9.1</Version>
+    <Description>Simple - C# Interface base communication module a'la WCF - server library .net 3.1</Description>
     <PackageProjectUrl>https://github.com/cv-lang/node-network</PackageProjectUrl>
     <RepositoryUrl>https://github.com/cv-lang/node-network</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cvl.NodeNetwork" Version="0.9.0" />
+    <PackageReference Include="Cvl.NodeNetwork" Version="0.9.1" />
   </ItemGroup>
 
 </Project>

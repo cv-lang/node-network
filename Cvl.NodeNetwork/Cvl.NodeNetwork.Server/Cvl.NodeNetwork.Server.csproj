@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <OutputType>Library</OutputType>
-    <Version>0.9.1</Version>
+    <Version>0.10.0</Version>
     <Description>Simple - C# Interface base communication module a'la WCF - server library .net 3.1</Description>
     <PackageProjectUrl>https://github.com/cv-lang/node-network</PackageProjectUrl>
     <RepositoryUrl>https://github.com/cv-lang/node-network</RepositoryUrl>
